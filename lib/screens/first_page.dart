@@ -5,14 +5,23 @@ class FirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final arg = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
-      appBar: AppBar(title: Text('first page')),
+      appBar: AppBar(title: const Text('first page')),
       body: Center(
-        child: ElevatedButton(
-            onPressed: () {
-              Navigator.pushNamed(context, 'second');
-            },
-            child: const Text('Second Page')),
+        child: Column(
+          children: [
+            Text(
+              arg,
+              style: const TextStyle(fontSize: 50),
+            ),
+            const SizedBox(height: 50),
+            const Text(
+              'Birinchi Sahifa',
+              style: TextStyle(fontSize: 30),
+            ),
+          ],
+        ),
       ),
     );
   }
