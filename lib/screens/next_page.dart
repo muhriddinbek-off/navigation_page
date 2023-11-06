@@ -5,26 +5,20 @@ class NextPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    List ismlar = ['SHerbek', 'Adham', 'Zohirshoh'];
     return Scaffold(
       backgroundColor: Colors.blue,
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ElevatedButton(
-              style: ButtonStyle(
-                minimumSize: MaterialStatePropertyAll(Size(150, 50)),
-                backgroundColor: MaterialStatePropertyAll(Colors.black),
-                shape: MaterialStatePropertyAll(RoundedRectangleBorder(borderRadius: BorderRadius.circular(50))),
-              ),
-              onPressed: () {
-                Navigator.pushNamed(context, 'first', arguments: 'Adham');
+      body: ListView.builder(
+          itemCount: ismlar.length,
+          itemBuilder: (context, index) {
+            return ListTile(
+              onTap: () {
+                Navigator.pushNamed(context, 'first', arguments: ismlar[index]);
               },
-              child: Text('Next Page'),
-            ),
-          ],
-        ),
-      ),
+              leading: Text(index.toString()),
+              title: Text(ismlar[index]),
+            );
+          }),
     );
   }
 }
